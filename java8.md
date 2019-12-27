@@ -1,0 +1,8 @@
+基础类型的Optional对象，以及为什么应该避免使用它们
+不知道你注意到了没有，与 Stream对象一样，Optional也提供了类似的基础类
+型——OptionalInt、OptionalLong以及OptionalDouble——所以代码清单10-6中的方法可
+以不返回Optional<Integer>，而是直接返回一个OptionalInt类型的对象。第5章中，我们
+讨论过使用基础类型Stream的场景，尤其是如果Stream对象包含了大量元素，出于性能的考量，
+使用基础类型是不错的选择，但对Optional对象而言，这个理由就不成立了，因为Optional
+对象最多只包含一个值。
+我们不推荐大家使用基础类型的Optional，因为基础类型的Optional不支持map、flatMap以及filter方法，而这些却是Optional类最有用的方法
