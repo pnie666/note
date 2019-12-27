@@ -6,13 +6,13 @@
 <hr/>
 
 # 你学到了以下的内容。
- null引用在历史上被引入到程序设计语言中，目的是为了表示变量值的缺失。
- Java 8中引入了一个新的类java.util.Optional<T>，对存在或缺失的变量值进行
+- null引用在历史上被引入到程序设计语言中，目的是为了表示变量值的缺失。
+- Java 8中引入了一个新的类java.util.Optional<T>，对存在或缺失的变量值进行
 建模。
- 你可以使用静态工厂方法Optional.empty、Optional.of以及Optional.ofNullable创建Optional对象。
- Optional类支持多种方法，比如map、flatMap、filter，它们在概念上与Stream类
+- 你可以使用静态工厂方法Optional.empty、Optional.of以及Optional.ofNullable创建Optional对象。
+- Optional类支持多种方法，比如map、flatMap、filter，它们在概念上与Stream类
 中对应的方法十分相似。
- 使用Optional会迫使你更积极地解引用Optional对象，以应对变量值缺失的问题，最
+- 使用Optional会迫使你更积极地解引用Optional对象，以应对变量值缺失的问题，最
 终，你能更有效地防止代码中出现不期而至的空指针异常。
- 使用Optional能帮助你设计更好的API，用户只需要阅读方法签名，就能了解该方法是
+- 使用Optional能帮助你设计更好的API，用户只需要阅读方法签名，就能了解该方法是
 否接受一个Optional类型的值。
