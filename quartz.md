@@ -89,3 +89,76 @@ public class QuartzTest{
 
 ```
 原文链接：https://blog.csdn.net/u010648555/article/details/54863144
+
+
+<hr>
+SpringBoot版本
+
+### maven
+```
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-quartz -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-quartz</artifactId>
+    <version>2.2.3.RELEASE</version>
+</dependency>
+
+```
+### 代码
+```java
+
+public class MyJob implements Job{
+	private static final Logger log = LoggerFactory.getLogger(MyJob.class);
+
+	@Override
+	public void execute(JobExecutionContext context)throws JobExecutionException {
+		log.info("MyJob  is start ..................");
+		
+        //在这里写自己的业务逻辑代码，比如支付宝每天定时统计每个会员的余额宝日收益，或者每个月的其他理财收益等
+        
+		log.info("Hello quzrtz  "+
+				new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ").format(new Date()));
+		
+		log.info("MyJob  is end .....................");
+	}
+	
+}
+
+@configuration
+public class QuartzConfig{
+
+	//创建jobDetail
+	@Bean
+    public JobDetail getJobDetail(){
+    
+    return JobBuilder.newJob(MyJob.class).withDescription("this is a Job").withIdentity("job1", "jGroup1").storeDurably().build();
+    }
+    
+	 // 2、创建Trigger
+	@Bean
+    public Trigger getTrigger(){
+    
+      CronScheduleBuilder builder = CronScheduleBuilder.cronSchedule("0/2 * * * * ?");
+    return  TriggerBuilder.newTrigger().forJob(getJobDetail())
+    				.withDescription("this is a trigger")
+					.withIdentity("trigger1", "Group1").startAt(new Date(time))
+					.withSchedule(builder)
+					.build();
+    }
+
+}
+
+//启动类上面需要加`@EnableScheduling`
+@SpringBootApplication
+@EnableScheduling
+public calss ApplicationQuartzTest{
+
+	public static void main (String[] arges){
+    
+    SpringApplication.run(ApplicationQuartzTest.calss);
+    
+    }
+}
+```
+
+- 使用springboot个人觉得更加简洁
