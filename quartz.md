@@ -3,6 +3,8 @@
 
 综上这些类似应用场景在Java技术领域有一个叫做Quartz的框架他就能帮我们轻松实现很多我们需要的场景，我们只需要把主要的精力放在业务代码上面即可。
 
+我们公司主要用于统计会员在线人数，会员日报表月报表统计这些。
+
 要使用Quartz首先我们需要导入maven或者gradle坐标
 ```java
 <!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
