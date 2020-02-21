@@ -1,3 +1,4 @@
+```java
 class UnitTestTool {
 
 	private static final MediaType contentType = MediaType.parse("application/json;charset=utf-8");
@@ -39,3 +40,4 @@ class UnitTestTool {
 		}
 	}
 }
+```
