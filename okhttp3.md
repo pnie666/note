@@ -29,10 +29,9 @@ class UnitTestTool {
 		RequestBody requestBody = RequestBody.create(contentType,json);
 		Request request = new okhttp3.Request.Builder().url(url).headers(headeers.of(head)).post(requestBody).build();
 		Request client = new okhttp3.Request.Builder().connectTimeout(10L,TimeUnit.SECODS).readTimeout(10L,TimeUnit.SECODS).build();
-		String str = "";
 		try{
 		 	Response response = client.newCall(request).execute();
-			str = response.body().string();
+			return response.body().string();
 			
 		}catch(IOExcepption e){
 			e.printStackTrace();
